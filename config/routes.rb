@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  # Routes for the Comment resource:
-
+  #Users didn't create controllers nor routes :(
   get("/", {:controller => "users", :action => "index"})
+  get("/users", {:controller => "users", :action => "index"})
+  get("/users/:username", {:controller => "users", :action => "index"})
+  get("/users/:username/liked_photos", {:controller => "users", :action => "liked_photos"})
+  get("/users/:username/feed", {:controller => "users", :action => "feed"})
+  get("/users/:username/discover", {:controller => "users", :action => "discover"})
+
+
+
+
+
+
+
+
+
   # CREATE
   post("/insert_comment", { :controller => "comments", :action => "create" })
           
@@ -21,19 +34,10 @@ Rails.application.routes.draw do
 
   # Routes for the Follow request resource:
 
-  # CREATE
   post("/insert_follow_request", { :controller => "follow_requests", :action => "create" })
-          
-  # READ
   get("/follow_requests", { :controller => "follow_requests", :action => "index" })
-  
   get("/follow_requests/:path_id", { :controller => "follow_requests", :action => "show" })
-  
-  # UPDATE
-  
   post("/modify_follow_request/:path_id", { :controller => "follow_requests", :action => "update" })
-  
-  # DELETE
   get("/delete_follow_request/:path_id", { :controller => "follow_requests", :action => "destroy" })
 
   #------------------------------

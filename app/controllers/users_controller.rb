@@ -8,11 +8,31 @@ class UsersController < ApplicationController
     render({:template => "users/index.html.erb" })
 
   end
-end
 
 def show
   username = params.fetch("username")
   @the_user = User.where({ :username => username}).first
   @pending_followers = FollowRequest.where({ :recipiento_id => current_user.id }).order({ :created_at => :desc})
   render({ :template => "users/show.html.erb"})
+end
+
+def feed
+  user = params.fetch("username")
+  matching_user = User.where({ :username => user }).first
+  @the_user = mathing_user
+  @accepted_follow_request_count = @current_user.sentfollowrequests.where({ :status => "accepted"}).count
+  @accepted_follow_request = @current_user.sentfollowersrequests.where({ :status => "accepted"})
+  render({ :template => "users/feed.html.erb"})
+
+end
+
+def liked_photos
+  @photos = @current_user.photos
+
+end
+
+def discover
+  render({ :template => "users/discover.html.erb"})
+
+  end
 end

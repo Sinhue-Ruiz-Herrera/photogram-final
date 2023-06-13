@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 def show
   username = params.fetch("username")
   @the_user = User.where({ :username => username}).first
-  @pending_followers = FollowRequest.where({ :recipiento_id => current_user.id }).order({ :created_at => :desc})
+  @pending_followers = FollowRequest.where({ :recipient_id => @current_user.id }).order({ :created_at => :desc})
   render({ :template => "users/show.html.erb"})
 end
 

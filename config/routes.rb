@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #Users didn't create controllers nor routes :(
   get("/", {:controller => "users", :action => "index"})
   get("/users", {:controller => "users", :action => "index"})
-  get("/users/:username", {:controller => "users", :action => "index"})
+  get("/users/:username", {:controller => "users", :action => "show"})
   get("/users/:username/liked_photos", {:controller => "users", :action => "liked_photos"})
   get("/users/:username/feed", {:controller => "users", :action => "feed"})
   get("/users/:username/discover", {:controller => "users", :action => "discover"})

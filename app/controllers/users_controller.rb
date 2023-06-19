@@ -19,7 +19,7 @@ end
 def feed
   user = params.fetch("username")
   matching_user = User.where({ :username => user }).first
-  @the_user = mathing_user
+  @the_user = matching_user
   @accepted_follow_request_count = @current_user.sentfollowrequests.where({ :status => "accepted"}).count
   @accepted_follow_request = @current_user.sentfollowersrequests.where({ :status => "accepted"})
   render({ :template => "users/feed.html.erb"})

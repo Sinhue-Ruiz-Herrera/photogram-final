@@ -1,23 +1,22 @@
 <div>
+ <a href="/photos">
+          Go back
+        </a>
   <div>
     <h1>
-      Photo #<%= @the_photo.id %> details
+      Photo Details
     </h1>
 
     <div>
       <div>
-        <a href="/photos">
-          Go back
-        </a>
+       
       </div>
-
-      <div>
-        <a href="/delete_photo/<%= @the_photo.id %>">
-          Delete photo
-        </a>
-      </div>
-    </div>
-
+        <dt>
+         Image
+        </dt>
+        <dd>
+        <img src="<% @the_photo.image %>">
+        </dd>
     <dl>
       <dt>
         Caption
@@ -26,26 +25,23 @@
         <%= @the_photo.caption %>
       </dd>
 
-      <dt>
-        Image
-      </dt>
-      <dd>
-        <%= @the_photo.image %>
-      </dd>
-
-      <dt>
-        Owner
-      </dt>
-      <dd>
-        <%= @the_photo.owner_id %>
-      </dd>
-
-      <dt>
+    <dt>
         Comments count
       </dt>
       <dd>
         <%= @the_photo.comments_count %>
       </dd>
+
+      <dt>
+   
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @the_photo.owner.username %>
+      </dd>
+
+  
 
       <dt>
         Likes count
@@ -55,18 +51,15 @@
       </dd>
 
       <dt>
-        Created at
+       Posted at
       </dt>
       <dd>
         <%= time_ago_in_words(@the_photo.created_at) %> ago
       </dd>
 
-      <dt>
-        Updated at
-      </dt>
+     <dt>Fans</dt>
       <dd>
-        <%= time_ago_in_words(@the_photo.updated_at) %> ago
-      </dd>
+        
     </dl>
   </div>
 </div>

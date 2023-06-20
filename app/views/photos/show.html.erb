@@ -59,22 +59,98 @@
 
      <dt>Fans</dt>
       <dd>
-        
+        <% @the_photo.likes.each do |flans|%>
+        <%= flans.fan.username%>
+        <%end%>
+      </dd>
+      
+      <dt>Add a fan</dt>
+
+      <dd> <% if @user_like_checker != nil %>
+        <a href="/delete_like/<%= @user_like_checker.id %>">
+        Unlike
+        </a>
+        <% else %>
+        <dd>
+
+
+      <form action="/insert_like" method="post">
+      <input type="hidden" id="fan_id_box" name="query_fan_id" value="<%= @current_user.id%>">
+      <input type="hidden" id="photo_id_box" name="query_photo_id" value="<%= @the_photo.id%>">
+      <button>Like</button>
+        <%end%>
+
     </dl>
   </div>
 </div>
 
-<hr>
 
+<dd>
+  <% if @current_user.id == @the_photo.owner_id%>
+  <dt>Edit Photo</dt>
+  <dd>
 
-<div>
+  <form action="/modify_photo/<%= @the_photo.id %>"  method="post" enctype="multipart/form-data" >
+  <label for="image_box">
+    Image
+  </label>
+
+  <input type="file" id="image_box" name="query_image" placeholder="Enter the URL for the image...">
+  <label for="browser_caption">
+    Caption
+  </label>
+
+  <textarea id="browser_caption" name="query_caption"> <%= @the_photo.caption %></textarea>
+  <button>
+    Update photo
+  </button> 
+  </form>
+  </dd>
+
+  <dt>
+    Delete photo
+  </dt>
+  <dd>
+  <a href="/delete_photo/<%= @the_photo.id %>">
+    Delete this photo
+  </a>
+  </dd>
+  </dl>
+  <%end%>
+
   <div>
     <h2>
-      Edit photo
+      Comments
     </h2>
+  <table>
+    <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+    </tr>
 
-    <form action="/modify_photo/<%= @the_photo.id %>"  method="post" >
-      <div>
+    <%@the_photo.comments.each do |comentarios| %>
+
+    <tr>
+      <td>
+        <%= comentarios.commenter.username%>
+      </td>
+
+      <td>
+        <%= comentarios.body %>
+      </td>
+
+      <td>
+        <%= time_ago_in_words(comentarios.created_at)%>
+      </td>
+    </tr>
+    <%end%>
+    </table>
+
+
+
+
+     <!-- <div>
         <label for="caption_box">
           Caption
         </label>
@@ -121,4 +197,4 @@
   </div>
 </div>
 
-<hr>
+<hr>-->

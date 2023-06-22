@@ -1,1 +1,101 @@
-<h1>Hi</h1>
+<h1><%=@current_user.username%></h1>
+
+<!-- Private?? -->
+<dl>Private</dl>
+<% if @current_user.private == true%>
+<dd>Yes</dd>
+<% else %>
+<dd>No</dd>
+<% end %>
+
+<!-- followers-->
+
+<%followers = @current_user.received_follow_requests%>
+<dt>Followers</dt>
+<dd><%=followers.count%>
+
+<!-- following-->
+<% following = @current_user.sentfollowrequests%>
+<dt>Following</dt>
+<dd><%=following.count%></dd>
+
+<!-- links -->
+<nav>
+  <ul>
+    <li>
+      <a href="/users/<%=@current_user.username%>"> Profile</a>
+    </li>
+     <li>
+      <a href="/users/<%=@current_user.username%>/liked_photos"> Liked photos</a>
+    </li>
+     <li>
+      <a href="/users/<%=@current_user.username%>/feed"> Feed</a>
+    </li>
+     <li>
+      <a href="/users/<%=@current_user.username%>/discover"> Discover</a>
+    </li>
+  </ul>
+  </nav>
+
+  <%accepted_requests = @current_user.sentfollowrequests.where({ :status => "accepted" %>
+  <h2>Discover (<%= accepted_requests.count%>)
+
+  <table border="2">
+    <tr>
+      Image
+    </th>
+      <tr>
+      Caption
+    </th>
+      <tr>
+      Owner
+    </th>
+      <tr>
+      Posted
+    </th>
+      <tr>
+      Likes
+    </th>
+
+    <th> </th>
+
+    <% accepted_requests.each do |accepted|%>
+    <% accepted.recipient.likes.each do |friends|%>
+
+    <tr>
+    <td>
+    <img src="<%friends.photo.image%>">
+    </td>
+    <td>
+    <%= friends.photo.caption%>
+    </td>
+     <td>
+    <%= friends.photo.owner.username%>
+    </td>
+    <td>
+    <%= time_ago_in_words(friends.photo.created_at).gsub("about"," ")%>
+    </td>
+    <td>
+    <%=friends.photo.likes_count%>
+    </td>
+
+    <%if @current_user == nil %>
+      <td>
+        <a href="/user_sign_in">
+        Show details
+        </a>
+      </td>
+      <% else %>
+    <td> <a href="/photos/<%friends.photo.id%>">
+        Show details
+        </a>
+    </td>
+
+    <% end %>
+    <% end %>
+
+   </tr>
+   <% end %>
+   </table>
+
+   

@@ -16,6 +16,12 @@ def show
   render({ :template => "users/show.html.erb"})
 end
 
+def liked_photos
+  @photos = @current_user.photos
+  render({ :template => "user/liked_photos.html.erb"})
+
+end
+
 def feed
   user = params.fetch("username")
   matching_user = User.where({ :username => user }).first
@@ -23,11 +29,6 @@ def feed
   @accepted_follow_request_count = @current_user.sentfollowrequests.where({ :status => "accepted"}).count
   @accepted_follow_request = @current_user.sentfollowrequests.where({ :status => "accepted"})
   render({ :template => "users/feed.html.erb"})
-
-end
-
-def liked_photos
-  @photos = @current_user.photos
 
 end
 

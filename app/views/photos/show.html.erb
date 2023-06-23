@@ -1,7 +1,4 @@
-<div>
- <a href="/photos">
-          Go back
-        </a>
+
   <div>
     <h1>
       Photo Details
@@ -32,7 +29,12 @@
         <%= @the_photo.comments_count %>
       </dd>
 
-      <dt>
+     <dt>
+        Likes count
+      </dt>
+      <dd>
+        <%= @the_photo.likes_count %>
+      </dd>
    
       <dt>
         Owner
@@ -43,12 +45,7 @@
 
   
 
-      <dt>
-        Likes count
-      </dt>
-      <dd>
-        <%= @the_photo.likes_count %>
-      </dd>
+      
 
       <dt>
        Posted at
@@ -95,7 +92,7 @@
     Image
   </label>
 
-  <input type="file" id="image_box" name="query_image" placeholder="Enter the URL for the image...">
+  <input type="file" id="image_box" name="query_image" placeholder="Enter a URL for the image...">
   <label for="browser_caption">
     Caption
   </label>
@@ -122,6 +119,7 @@
     <h2>
       Comments
     </h2>
+    
   <table>
     <tr>
     <th>Commenter</th>

@@ -2,6 +2,7 @@
     <h1>
       List of all photos
     </h1>
+
   <% if session.fetch(:user_id) != nil%>
   <h2> Add a new photo </h2>
 
@@ -23,8 +24,12 @@
 
       </div>
       <button> Add photo </button>
+      </form>
         <%end%>
 
+<hr>
+<div>
+<div>
     <table border="1">
       <tr>
         <th>
@@ -40,16 +45,13 @@
         </th>
 
         <th>
-         Likes
+        Posted
         </th>
 
         <th>
-         Posted
+        Likes
         </th>
 
-        <th>
-          Likes count
-        </th>
         <th>
         </th>
       </tr>
@@ -58,7 +60,7 @@
       <%if a_photo.owner.private != true %>
       <tr>
         <td>
-          <img src="<%=a_photo.image%>" >
+          <img src="<%=a_photo.image%>" class="img-responsive" >
         </td>
 
         <td>
@@ -70,19 +72,20 @@
         <td>
           <%= a_photo.owner.username %>
         </td>
+         <td>
+          <%= time_ago_in_words(a_photo.created_at) %> ago
+        </td>
 
         <td>
           <%= a_photo.likes_count %>
         </td>
 
-        <td>
-          <%= time_ago_in_words(a_photo.created_at) %> ago
-        </td>
+      
        <% if @current_user == nil%>
 
       <td>
           <a href="/user_sign_in">
-            Sign in
+            Show Details
           </a>
         </td>
         <% else %>

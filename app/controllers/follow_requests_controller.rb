@@ -19,10 +19,9 @@ class FollowRequestsController < ApplicationController
 
   def create
     the_follow_request = FollowRequest.new
+    the_follow_request.recipient_id = params.fetch("query_recipient_id") #recipient doesn't have to be signed in to be sent a request
 
     the_follow_request.sender_id = session.fetch(:user_id) #we fetch the session since a session is pretty much the same as a user
-    the_follow_request.recipient_id = params.fetch("query_recipient_id") #recipient doesn't have to be signed in to be sent a request
-    #the_follow_request.status = params.fetch("query_status")
     waiting = the_follow_request.status
 
     if the_follow_request.recipient.private

@@ -12,7 +12,7 @@
          Image
         </dt>
         <dd>
-        <img src="<% @the_photo.image %>">
+        <img src="<%= @the_photo.image %>">
         </dd>
     <dl>
       <dt>
@@ -43,10 +43,6 @@
         <%= @the_photo.owner.username %>
       </dd>
 
-  
-
-      
-
       <dt>
        Posted at
       </dt>
@@ -63,18 +59,20 @@
       
       <dt>Add a fan</dt>
 
-      <dd> <% if @user_like_checker != nil %>
+      <dd> 
+      <% if @user_like_checker != nil %>
         <a href="/delete_like/<%= @user_like_checker.id %>">
         Unlike
         </a>
+
         <% else %>
-        <dd>
-
-
+     <dd>
       <form action="/insert_like" method="post">
       <input type="hidden" id="fan_id_box" name="query_fan_id" value="<%= @current_user.id%>">
       <input type="hidden" id="photo_id_box" name="query_photo_id" value="<%= @the_photo.id%>">
       <button>Like</button>
+      </form>
+     </dd>
         <%end%>
 
     </dl>
@@ -93,6 +91,7 @@
   </label>
 
   <input type="file" id="image_box" name="query_image" placeholder="Enter a URL for the image...">
+ 
   <label for="browser_caption">
     Caption
   </label>
@@ -114,6 +113,8 @@
   </dd>
   </dl>
   <%end%>
+  </div>
+  </div>
 
   <div>
     <h2>

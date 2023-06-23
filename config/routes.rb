@@ -10,11 +10,6 @@ Rails.application.routes.draw do
 
 
 
-
-
-
-
-
   # CREATE
   post("/insert_comment", { :controller => "comments", :action => "create" })
           
@@ -90,6 +85,8 @@ Rails.application.routes.draw do
   # EDIT PROFILE FORM        
   get("/edit_user_profile", { :controller => "user_authentication", :action => "edit_profile_form" })       
   # UPDATE RECORD
+  post("/modify_user/:user_id", { :controller => "user_authentication", :action => "update" })
+
   post("/modify_user", { :controller => "user_authentication", :action => "update" })
   
   # DELETE RECORD

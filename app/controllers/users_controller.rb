@@ -10,10 +10,13 @@ class UsersController < ApplicationController
   end
 
 def show
-  username = params.fetch("username")
-  @the_user = User.where({ :username => username}).first
+  #if session.fetch(:user_id) !=nil
+  user = params.fetch("username")
+  @the_user = User.where({ :username => user}).first  
+
   @pending_followers = FollowRequest.where({ :recipient_id => @current_user.id }).order({ :created_at => :desc})
   render({ :template => "users/show.html.erb"})
+
 end
 
 def liked_photos

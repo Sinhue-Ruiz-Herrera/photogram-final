@@ -14,7 +14,7 @@
   <dd><%=followers.count%></dd>
 
 <!-- following-->
-  <% following = @current_user.sentfollowrequests%>
+  <%= following = @current_user.sentfollowrequests%>
   <dt>Following</dt>
   <dd><%= following.count%></dd>
 
@@ -83,7 +83,7 @@
 
         <% if @current_user != nil %>
           <td>
-          <a href="photos/<%= likes.photo.id %>">
+          <a href="/photos/<%= likes.photo.id %>">
           Show Details
           </a>
           </td>

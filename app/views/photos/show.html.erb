@@ -5,8 +5,6 @@
     </h1>
 
     <div>
-      <div>
-       
       </div>
         <dt>
          Image
@@ -80,8 +78,7 @@
 </div>
 
 
-<dd>
-  <% if @current_user.id == @the_photo.owner_id%>
+  <% if @current_user.id == @the_photo.owner_id %>
   <dt>Edit Photo</dt>
   <dd>
 
@@ -123,12 +120,12 @@
     
   <table>
     <tr>
-    <th>Commenter</th>
-    <th>Comment</th>
-    <th>Posted</th>
+      <th>Commenter</th>
+      <th>Comment</th>
+      <th>Posted</th>
     </tr>
 
-    <%@the_photo.comments.each do |comentarios| %>
+    <% @the_photo.comments.each do |comentarios| %>
 
     <tr>
       <td>

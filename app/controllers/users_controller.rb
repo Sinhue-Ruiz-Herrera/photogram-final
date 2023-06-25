@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 def show
   #if session.fetch(:user_id) !=nil
   user = params.fetch("username")
-  @the_user = User.where({ :username => user}).first  
+  matching_user = User.where({ :username => user}).first 
+  @the_user = matching_user
 
   @pending_followers = FollowRequest.where({ :recipient_id => @current_user.id }).order({ :created_at => :desc})
   render({ :template => "users/show.html.erb"})
@@ -21,7 +22,7 @@ end
 
 def liked_photos
   @photos = @current_user.photos
-  render({ :template => "user/liked_photos.html.erb"})
+  render({ :template => "users/liked_photos.html.erb"})
 
 end
 

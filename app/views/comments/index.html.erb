@@ -13,22 +13,14 @@
     <h2>
       Add a new comment
     </h2>
-
+  <div>
+       
     <form action="/insert_comment" method="post">
       <div>
-        <label for="body_box">
-          Body
-        </label>
-
-        <textarea id="body_box" name="query_body" rows="3"></textarea>
-      </div>
-
-      <div>
-        <label for="author_id_box">
+      <label for="author_id_box">
           Author
         </label>
-
-        <input type="text" id="author_id_box" name="query_author_id">
+     <input type="text" id="author_id_box" name="query_author_id">
       </div>
 
       <div>
@@ -38,7 +30,12 @@
 
         <input type="text" id="photo_id_box" name="query_photo_id">
       </div>
+        <label for="body_box">
+          Body
+        </label>
 
+        <textarea id="body_box" name="query_body" rows="3"></textarea>
+      </div>
       <button>
         Create comment
       </button>
@@ -56,15 +53,15 @@
         </th>
 
         <th>
-          Body
-        </th>
-
-        <th>
           Author
         </th>
 
         <th>
           Photo
+        </th>
+
+        <th>
+          Body
         </th>
 
         <th>

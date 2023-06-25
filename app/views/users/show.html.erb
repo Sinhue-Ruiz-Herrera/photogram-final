@@ -1,4 +1,4 @@
-<h1> <%= @the_user.username%></h1>
+<h1> <%= @the_user.username %> </h1>
 <dl>
 <dt>Private</dt>
 <% if @the_user.private == true %>
@@ -111,6 +111,7 @@
   <td> <%=@the_user.username%></td>
   <td> <%=foto.caption%> </td>
   <td> <%=time_ago_in_words(foto.created_at).gsub("about"," ").sub("almost"," ").gsub("over"," ")%> ago</td>
+  <td> <%= foto.likes_count%>
   <td> <a href="/photos/<%=foto.id%>">Show details</a></td>
   </tr>
   <%end%>

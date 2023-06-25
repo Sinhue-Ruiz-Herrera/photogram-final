@@ -12,7 +12,7 @@
 
 <%followers = @current_user.received_follow_requests%>
 <dt>Followers</dt>
-<dd><%=followers.count%>
+<dd><%=followers.count%></dd>
 
 <!-- following-->
 <% following = @current_user.sentfollowrequests%>
@@ -37,10 +37,10 @@
   </ul>
   </nav>
 
-  <%accepted_requests = @current_user.sentfollowrequests.where({ :status => "accepted" %>
-  <h2>Discover (<%= accepted_requests.count%>)
+  <%accepted_requests = @current_user.sentfollowrequests.where({ :status => "accepted" })%>
+  <h2>Discover (<%= accepted_requests.count%>) </h2>
 
-  <table border="2">
+  <table border="1">
     <tr>
       Image
     </th>
@@ -64,7 +64,7 @@
 
     <tr>
     <td>
-    <img src="<%friends.photo.image%>">
+    <img src="<%=friends.photo.image%>" class="img-responsive" >
     </td>
     <td>
     <%= friends.photo.caption%>

@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
     matching_photos = Photo.where({ :id => the_id })
 
     @the_photo = matching_photos.at(0)
-    @user_like_counter = @the_photo.likes.where({ :fan_id => @current_user.id}).first
+    @user_like_checker = @the_photo.likes.where({ :fan_id => @current_user.id}).first
    render({ :template => "photos/show.html.erb" })
     else
       redirect_to("/user_sign_in", { :alert => "You have to sign in first"})
